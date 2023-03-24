@@ -2,7 +2,8 @@
     <header>
         <h1><NuxtLink class="link" to="/meals">Browse Recipes</NuxtLink></h1>
         <p>|</p>
-        <h1><NuxtLink class="link" to="/login">Login</NuxtLink></h1>
+        <h1 v-if="isLoggedIn === false"><NuxtLink class="link" to="/login">Login</NuxtLink></h1>
+        <h1 v-else><NuxtLink class="link" to="/profile">Profile</NuxtLink></h1>
         <div></div>
     </header>
 </template>
@@ -10,6 +11,16 @@
 <script>
 export default {
     name: 'recipe',
+    data() {
+        return {
+            isLoggedIn: false
+        }
+    },  
+    beforeMount () {
+        if(this.$store.state.authUser) {
+        this.isLoggedIn = true
+        }else this.isLoggedIn = false
+    }
 }
 </script>
 

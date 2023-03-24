@@ -9,7 +9,8 @@
                 </button>
             </div>
             <p>|</p>
-            <h1><NuxtLink class="link" to="/login">Login</NuxtLink></h1>
+            <h1 v-if="isLoggedIn === false"><NuxtLink class="link" to="/login">Login</NuxtLink></h1>
+            <h1 v-else><NuxtLink class="link" to="/profile">Profile</NuxtLink></h1>
             <div></div>
         </div>
         <Loading v-if="$fetchState.pending"/>
@@ -65,8 +66,16 @@
                 recipes: [],
                 searchInput: '',
                 searchedRecipes: [],
+                isLoggedIn: false
             }
         },
+        beforeMount () {
+        if(this.$store.state.authUser) {
+            this.isLoggedIn = true
+            }
+        else this.isLoggedIn = false
+        },
+
         async fetch() {
             if (this.searchInput === '') {
                 await this.getRecipes()
