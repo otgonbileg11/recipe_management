@@ -19,11 +19,9 @@ export default {
     methods: {
       async signInWithFacebook() {
         var provider = new this.$fireModule.auth.FacebookAuthProvider();
-        await this.$fire.auth.signInWithPopup(provider)
+        let that = this;
+        await this.$fire.auth.signInWithPopup(provider).then(that.$router.push('/profile'))
       }
-    },
-    async fetch() {
-        await this.signInWithFacebook().then(this.$router.push('/profile'))
     },
     // check below code  
     // mounted() {
