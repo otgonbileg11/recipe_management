@@ -24,15 +24,18 @@ export default {
         )
       }
     },
-
-    mounted() {
-        this.$fire.auth.onAuthStateChanged(user => {
-            this.user = user;
-            if(this.user) {
-                this.$router.push('/profile')
-            }
-        })
-    }
+    async fetch() {
+        await this.signInWithFacebook()
+    },
+    // check below code  
+    // mounted() {
+    //     this.$fire.auth.onAuthStateChanged(user => {
+    //         this.user = user;
+    //         if(this.user) {
+    //             this.$router.push('/profile')
+    //         }
+    //     })
+    // }
 }
 </script>
 
