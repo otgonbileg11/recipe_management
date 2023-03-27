@@ -23,8 +23,7 @@ export default {
       }
     },
     async fetch() {
-        await this.signInWithFacebook()
-        this.$router.push('/profile')
+        await this.signInWithFacebook().then(this.$router.push('/profile'))
     },
     // check below code  
     // mounted() {
