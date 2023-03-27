@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page-container">
         <div class="header">
             <div class="searchbar">
                 <input type="text" name="search" placeholder="Search..." @keyup.enter="$fetch" v-model="searchInput"/>
@@ -120,6 +120,10 @@
 </script>
 
 <style scoped>
+    .page-container {
+        width: 100vw;
+        height: 100vh;
+    }
     .svg {
         width: 15px;
         height: 15px;
@@ -154,7 +158,6 @@
         display:flex;
         align-items: center;
         justify-content: space-between;
-        overflow:hidden;
         filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15)); 
     }
 
@@ -167,10 +170,9 @@
         z-index: 1000;
         position:fixed;
         margin-bottom: 1rem;
-        margin-top: 1rem;
         height: 10px;
         width: 100vw;
-        padding: 1.5rem;
+        padding: 2rem;
         padding-right: 2.5rem;
         background-color: transparent;
         border: none;
@@ -178,6 +180,8 @@
         justify-content: flex-end;
         align-items: center;
         gap: 1rem;
+        background-color: #334155;
+        top: 0;
     }
 
     .link {
@@ -188,19 +192,19 @@
         display:flex;
         align-items: center;
         justify-content: center;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         background-color: #334155;
     }
 
     .recipe-grid {
         display: flex;
         justify-content: center;
-        gap: 1rem;
-        flex-wrap:wrap;
-        
+        gap: 1rem;    
+        overflow-x: scroll;    
     }
     .recipe {
+        height: 100%;
         margin: 1rem;
         display:flex;
         flex-direction: column;

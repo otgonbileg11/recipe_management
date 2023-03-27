@@ -1,10 +1,14 @@
 <template>
     <header>
-        <h1><NuxtLink class="link" to="/meals">Browse Recipes</NuxtLink></h1>
-        <p>|</p>
-        <h1 v-if="isLoggedIn === false"><NuxtLink class="link" to="/login">Login</NuxtLink></h1>
-        <h1 v-else><NuxtLink class="link" to="/profile">Profile</NuxtLink></h1>
-        <div></div>
+        <div>
+            <h1><NuxtLink class="link home" to="/">Home</NuxtLink></h1>
+        </div>
+        <div class="top-right">
+            <h1><NuxtLink class="link" to="/meals">Browse Recipes</NuxtLink></h1>
+            <p>|</p>
+            <h1 v-if="isLoggedIn === false"><NuxtLink class="link" to="/login">Login</NuxtLink></h1>
+            <h1 v-else><NuxtLink class="link" to="/profile">Profile</NuxtLink></h1>
+        </div>
     </header>
 </template>
 
@@ -30,6 +34,9 @@ export default {
         color:white;
         font-size: 1.5rem;
     }
+    .home {
+        margin-left: 2rem;
+    }
 
     header p {
         color: gray;
@@ -48,11 +55,15 @@ export default {
         background-color: transparent;
         border: none;
         display:flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         gap: 1rem;
     }
-
+    .top-right {
+        display:flex;
+        align-items: center;
+        gap: 1rem;
+    }
     .link {
         text-decoration: none;
         color:white;
